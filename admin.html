@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Администрирование базы опросника 5F" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Администрирование опросника 5F</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./config.js" defer></script>
+    <script type="module" src="./admin.js"></script>
+</head>
+<body>
+    <main class="container admin-container">
+        <div class="header-actions">
+            <div>
+                <h1>Администрирование <span class="copper">опросника 5F</span></h1>
+                <div class="subhead">
+                    Защищённая страница для полной очистки результатов в MySQL.
+                </div>
+            </div>
+            <div class="header-buttons">
+                <a class="btn btn-secondary" href="./stats.html">← К статистике</a>
+                <a class="btn btn-secondary" href="./index.html">К опроснику</a>
+            </div>
+        </div>
+
+        <div id="configNotice" class="mode-notice" aria-live="polite"></div>
+
+        <section id="loginSection" class="admin-card">
+            <h2>Вход администратора</h2>
+            <p class="admin-note">Используйте учётную запись администратора, созданную в базе MySQL.</p>
+
+            <form id="loginForm" class="admin-form">
+                <label class="form-field">
+                    <span>Email</span>
+                    <input id="emailInput" type="email" autocomplete="username" required />
+                </label>
+                <label class="form-field">
+                    <span>Пароль</span>
+                    <input id="passwordInput" type="password" autocomplete="current-password" required minlength="6" />
+                </label>
+                <button class="btn" id="loginBtn" type="submit">Войти</button>
+            </form>
+            <div id="loginMessage" class="form-message" aria-live="assertive"></div>
+        </section>
+
+        <section id="adminSection" class="admin-card" hidden>
+            <div class="admin-session-row">
+                <div>
+                    <span class="admin-label">Администратор</span>
+                    <strong id="adminEmail">—</strong>
+                </div>
+                <button class="btn btn-secondary" id="logoutBtn" type="button">Выйти</button>
+            </div>
+
+            <div class="admin-database-status">
+                <span>Записей в базе:</span>
+                <strong id="recordCount">—</strong>
+                <button class="text-button" id="refreshCountBtn" type="button">Обновить количество</button>
+            </div>
+
+            <div class="danger-zone">
+                <h2>Полная очистка базы</h2>
+                <p>
+                    Операция безвозвратно удалит все результаты опросов и сбросит нумерацию записей.
+                    Восстановить данные через эту страницу невозможно.
+                </p>
+                <label class="form-field confirmation-field">
+                    <span>Для подтверждения введите <strong>УДАЛИТЬ</strong></span>
+                    <input id="confirmationInput" type="text" autocomplete="off" spellcheck="false" />
+                </label>
+                <button class="btn btn-danger" id="clearDatabaseBtn" type="button" disabled>
+                    Удалить все результаты
+                </button>
+                <div id="adminMessage" class="form-message" aria-live="assertive"></div>
+            </div>
+        </section>
+    </main>
+
+    <noscript>Для администрирования необходимо включить JavaScript.</noscript>
+</body>
+</html>

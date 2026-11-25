@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Создание администратора 5F</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./config.js" defer></script>
+    <script type="module" src="./setup-admin.js"></script>
+</head>
+<body>
+    <main class="container admin-container">
+        <div class="header-actions">
+            <div>
+                <h1>Первичная настройка <span class="copper">администратора 5F</span></h1>
+                <div class="subhead">
+                    Используйте эту страницу один раз, затем очистите setup_key в api/config.php.
+                </div>
+            </div>
+            <div class="header-buttons">
+                <a class="btn btn-secondary" href="./admin.html">← К администрированию</a>
+            </div>
+        </div>
+
+        <section class="admin-card">
+            <form id="setupForm" class="admin-form">
+                <label class="form-field">
+                    <span>Setup key из api/config.php</span>
+                    <input id="setupKeyInput" type="password" autocomplete="off" required />
+                </label>
+                <label class="form-field">
+                    <span>Email администратора</span>
+                    <input id="emailInput" type="email" autocomplete="username" required />
+                </label>
+                <label class="form-field">
+                    <span>Пароль администратора (не менее 10 символов)</span>
+                    <input id="passwordInput" type="password" autocomplete="new-password" minlength="10" required />
+                </label>
+                <button class="btn" id="setupBtn" type="submit">Создать администратора</button>
+            </form>
+            <div id="setupMessage" class="form-message" aria-live="assertive"></div>
+        </section>
+    </main>
+</body>
+</html>
